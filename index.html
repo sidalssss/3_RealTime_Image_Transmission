@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sidal Sınırtaş - WebRTC Image Transmission</title>
+    <style>
+        video { width: 50%; border: 2px solid #333; }
+        .controls { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Image Transmission System (WebRTC)</h1>
+    <video id="localVideo" autoplay playsinline></video>
+    <video id="remoteVideo" autoplay playsinline></video>
+    <div class="controls">
+        <button onclick="startVideo()">Kamerayı Başlat</button>
+        <button onclick="callRemote()">Görüntü Aktar (Simüle)</button>
+    </div>
+
+    <script>
+        let localStream;
+        async function startVideo() {
+            localStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
+            document.getElementById('localVideo').srcObject = localStream;
+        }
+
+        function callRemote() {
+            // WebRTC PeerConnection mantığı simülasyonu
+            alert("PeerConnection bağlantısı kuruluyor... (WebRTC)");
+            document.getElementById('remoteVideo').srcObject = localStream;
+        }
+    </script>
+</body>
+</html>
